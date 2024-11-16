@@ -1,5 +1,6 @@
 package com.dev.intensivao_devsuperior.entities;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,7 +20,11 @@ public class Jogo {
     private String plataforma;
     private Double pontuacao;
     private String imgUrl;
+
+    @Column(columnDefinition = "TEXT")
     private String descricaoCurta;
+
+    @Column(columnDefinition = "TEXT")
     private String descricaoLonga;
     
     public Jogo() {
