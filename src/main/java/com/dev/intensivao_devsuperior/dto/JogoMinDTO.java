@@ -1,6 +1,7 @@
 package com.dev.intensivao_devsuperior.dto;
 
 import com.dev.intensivao_devsuperior.entities.Jogo;
+import com.dev.intensivao_devsuperior.projections.JogoMinProjection;
 
 public class JogoMinDTO {
 
@@ -18,6 +19,14 @@ public class JogoMinDTO {
         this.ano = jogo.getAno();
         this.imgUrl = jogo.getImgUrl();
         this.descricaoCurta = jogo.getDescricaoCurta();
+    }
+
+    public JogoMinDTO(JogoMinProjection projection) {
+        this.id = projection.getId();
+        this.titulo = projection.getTitulo();
+        this.ano = projection.getAno();
+        this.imgUrl = projection.getImgUrl();
+        this.descricaoCurta = projection.getDescricaoCurta();
     }
 
     public Long getId() {
