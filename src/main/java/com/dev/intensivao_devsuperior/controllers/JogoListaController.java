@@ -5,11 +5,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dev.intensivao_devsuperior.dto.JogoListaDTO;
 import com.dev.intensivao_devsuperior.dto.JogoMinDTO;
+import com.dev.intensivao_devsuperior.dto.ReposicionaDTO;
 import com.dev.intensivao_devsuperior.services.JogoListaService;
 import com.dev.intensivao_devsuperior.services.JogoService;
 
@@ -31,5 +34,10 @@ public class JogoListaController {
     @GetMapping("/{listaId}/jogos")
     public List<JogoMinDTO> retornaPorLista(@PathVariable Long listaId){
         return jogoService.buscarPorLista(listaId);
+    }
+
+    @PostMapping("/{listaId}/reposiciona")
+    public void mover(@PathVariable Long listaId, @RequestBody ReposicionaDTO reposicionaDTO){
+        jogoListaService.mover(listaId, reposicionaDTO.getIndexOrigem(), reposicionaDTO.getIndexDestino());
     }
 }
